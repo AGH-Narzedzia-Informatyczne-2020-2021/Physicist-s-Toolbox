@@ -5,3 +5,8 @@
  - [x] Do YOU feel like you're under too much **pressure** to have friendly **atmosphere**?
  ## About this program
  Our program has been made with people like you in mind! It will provide you with all the useful tools to make physical calculations a real pleasure.  
+ ### Designed by:
+ * Paulina Gacek
+ * Julia Pleszewska
+ * Michaela Klimek
+ * Michał Strzeżoń
