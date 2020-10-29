@@ -8,5 +8,5 @@
  ### Designed by:
  * Paulina Gacek :bat:
  * Julia Pleszewska :pig:
- * Michaela Klimek 
- * Michał Strzeżoń 
+ * Michaela Klimek :dragon_face:
+ * Michał Strzeżoń :soccer:
