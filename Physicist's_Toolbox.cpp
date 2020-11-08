@@ -9,5 +9,6 @@ int main()
 {
     cout << "Wprowadź dziedzinę fizyki: ";
     cout << "Tutaj pojawi sie kod programu! Nadal trwaja prace!" << endl;
+    cout << "Zmiana, żeby spowodować konfikt";
     return 0;
 }
