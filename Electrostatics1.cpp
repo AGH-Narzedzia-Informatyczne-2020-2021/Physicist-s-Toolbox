@@ -1,12 +1,14 @@
 #include <iostream>
+#include <cmath>
 using namespace std;
 struct Charge {
-	double charge;
-	double xposition;
-	double yposition;
+    double charge;
+    double xposition;
+    double yposition;
+    double distance;
 };
 
-void Intensity()
+void Potential()
 {
 	cout << "Type how many objects will we be considering?" << endl;
 	unsigned int n;
@@ -23,7 +25,7 @@ void Intensity()
 	{
 		struct Charge charge0;
 		cout << endl << "Object number " << i + 1 << endl << endl;
-		cout << "Input the value of the charge of your " << i + 1 << " object expressed in Culombs : ";
+		cout << "Input the charge of " << i + 1 << " object expressed in Culombs : ";
 		double c;
 		cin >> c;
 		charge0.charge = c;
@@ -42,11 +44,36 @@ void Intensity()
 		//cout << tablica[i].xposition<<endl;
 	}
 
-	cout <<
+	cout << endl << "Input the coordinates of the point where you want to get to know resultant potenctial " << endl;
+	cout << "X coordinate: ";
+	double xres = 0, yres = 0;
+	cin >> xres;
+	cout << "Y coordinate: ";
+	cin >> yres;
+
+	for (i = 0; i < n; i++)
+	{
+		double d = (tablica[i].xposition - xres) * (tablica[i].xposition - xres) + (tablica[i].yposition - yres) * (tablica[i].yposition - yres);
+		tablica[i].distance = sqrt(d);
+		cout << tablica[i].distance << endl;
+	}
+
+	double resPotential = 0;
+
+	for (i = 0; i < n; i++)
+	{
+		resPotential += tablica[i].charge / tablica[i].distance;
+	}
+
+	resPotential *= 0, 079577;
+
+	cout << "Your resultantant potencial in the point (" << xres << " ; " << yres << ") equals: " << endl;
+	cout << resPotential << " Volts" << endl;
+
 }
 
 int main()
 {
-	Intensity();
+	Potential();
 	return 0;
 }
