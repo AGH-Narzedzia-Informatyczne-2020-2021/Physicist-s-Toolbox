@@ -65,7 +65,7 @@ void Potential()
 		resPotential += tablica[i].charge / tablica[i].distance;
 	}
 
-	resPotential *= 0, 079577;
+	resPotential *= 0.079577;
 
 	cout << "Your resultantant potencial in the point (" << xres << " ; " << yres << ") equals: " << endl;
 	cout << resPotential << " Volts" << endl;
