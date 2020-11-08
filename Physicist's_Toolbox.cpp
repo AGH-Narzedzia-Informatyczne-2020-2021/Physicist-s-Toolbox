@@ -7,6 +7,7 @@ using namespace std;
 
 int main()
 {
-    cout << "Tutaj pojawi sie kod programu! Nadal trwaja prace!" << endl;
+    cout << "Tutaj pojawi sie kod  programu! Nadal trwaja prace!" << endl;
+    cout << "Nowa linia" << endl;
     return 0;
 }
