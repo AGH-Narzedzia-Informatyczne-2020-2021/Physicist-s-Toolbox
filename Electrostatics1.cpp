@@ -1,6 +1,5 @@
 #include <iostream>
 #include <cmath>
-#include "constants.h"
 using namespace std;
 struct Charge {
     double charge;
@@ -66,7 +65,7 @@ void Potential()
 		resPotential += tablica[i].charge / tablica[i].distance;
 	}
 
-	resPotential *= vacuumElectr;
+	resPotential *= 0.079577;
 
 	cout << "Your resultantant potencial in the point (" << xres << " ; " << yres << ") equals: " << endl;
 	cout << resPotential << " Volts" << endl;
