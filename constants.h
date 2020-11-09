@@ -26,10 +26,9 @@ constexpr auto EarthRadius{ 6.38e6 };			// radius of Earth (m)
 constexpr auto EarthYear{ 3.1536e7 };			// Earth's period of orbit (s)
 constexpr auto EarthEscape{ 1.12e4 };			// Earth's escape velocity (m/s)
 constexpr auto EarthAxis{ 1.496e11 };			// Earth's semi-major axis (m)
+constexpr auto EarthSpeed{ 7.292e-5 };			// Earth's angular speed (rad/s)
 
 constexpr auto AstroUnit{ 1.5e11 };				// Astronomical Unit (m)
-
-
-
+constexpr auto pi{ 3.141592653589793 };
 
 #endif
