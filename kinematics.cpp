@@ -5,10 +5,16 @@
 
 using namespace std;
 
-void rzut_poziomy()
+void horizontal_projection()
 {
-    cout << ("Wybrales rzut poziomy! Wybierz co chcesz policzyc(1-7):\n");
-    cout << ("1.Predkosc pionowa w danej chwili\n2.Predkosc pozioma w danej chwili\n3.Predkosc skladowa w danej chwili\n4.Wspolrzedne polozenia ciala\n5.Czas spadku(lotu)\n6.Zasieg rzutu\n7.Wartosc predkosci koncowej ciala\n");
+    cout << "Wybrales rzut poziomy! Wybierz co chcesz policzyc(1-7):\n"
+        << "1.Predkosc pionowa w danej chwili\n"
+        << "2.Predkosc pozioma w danej chwili\n"
+        << "3.Predkosc skladowa w danej chwili\n"
+        << "4.Wspolrzedne polozenia ciala\n" 
+        << "5.Czas spadku(lotu)\n"
+        << "6.Zasieg rzutu\n"
+        << "7.Wartosc predkosci koncowej ciala\n";
     int option = 0;
     char koniec;
     cin >> option;
@@ -109,3 +115,133 @@ void rzut_poziomy()
      
     }
 }
+
+void free_fall()
+{
+    cout << "Your choice: free fall! What function are you looking for?\n"
+        << "1.Czas, po ktorym cialo rzucone w gore osiagnie maksymalna wysokosc\n"
+        << "2.Maksymalna wysokosc, jaka osiagnie cialo rzucone w gore\n"
+        << "3.Czas swobodnego spadania ciala z wysokosci\n"
+        << "4.Predkosc, z jaka uderzy w ziemie swobodnie spadajace cialo\n" ;
+    int option = 0;
+    char koniec;
+    cin >> option;
+
+    if(option == 1) //Czas-ciało rzucone w górę
+    {
+        double t = 0, v_0 = 0;
+        cout << "Podaj predkosc poczatkowa rzutu w gore (m/s): ";
+        cin >> v_0;
+        t = v_0 / EarthGrav;
+        cout << t << "s";
+    }    
+    if(option == 2) //Maksymalna wysokosc
+    {
+        double v_0 = 0, h = 0;
+        cout << "Podaj predkosc poczatkowa rzutu w gore (m/s): ";
+        cin >> v_0;
+        h = (v_0 * v_0)/(2 * EarthGrav);
+        cout << h << "m";
+    }
+    if(option == 3) //Czas swobodnego spadku
+    {
+        double h = 0, t = 0;
+        cout << "Podaj wysokosc(metry): ";
+        cin >> h;
+        t = sqrt(2*h/EarthGrav);
+        cout << t << "s" << endl;
+    }
+    if(option == 4) //Predkosc uderzenia w ziemie
+    {
+        double h_0 = 0, v = 0;
+        cout << "Podaj wysokosc z jakiej upuszczono cialo (m): ";
+        cin >> h_0;
+        v = sqrt(2 * EarthGrav * h_0);
+        cout << v << "m/s";
+    }
+}
+
+void circular_motion()
+{
+    cout << "Your choice: circular motion! What function are you looking for?\n"
+        << "1.Okres i czestotliwosc ruchu po okregu\n"
+        << "2.Okres(znajac czestotliwosc)\n"
+        << "3.Czestotliwosc(znajac okres)\n"
+        << "4.Predkosc liniowa w ruchu po okregu\n"
+        << "5.Predkosc katowa wzgledem liniowej\n"
+        << "6.Przyspieszenie dosrodkowe\n";
+    int option = 0;
+    char koniec;
+    cin >> option;
+
+    if(option == 1)
+    {
+        double n = 0, t = 60;
+        cout << "Podaj liczbe obrotow na minute: ";
+        cin >> n;
+        cout << "Czestotliwosc: " << n / t << " Hz\n";
+        cout << "Okres: " << t / n << " s";
+    } 
+    if(option == 2)
+    {
+        double f = 0;
+        cout << "Podaj czestotliwosc: ";
+        cin >> f;
+        cout << "Okres: " << 1/f << " s";
+    }
+    if(option == 3)
+    {
+        double T = 0;
+        cout << "Podaj okres: ";
+        cin >> T;
+        cout << "Czestotliwosc: " << 1/T << " Hz";
+    }
+    if(option == 4)
+    {
+        double r = 0, T = 0, f = 0;
+        char znak;
+        cout << "Podaj promien okregu: ";
+        cin >> r;
+        cout << "Podaj czestotliwosc lub okres"
+            << "(jesli podajesz okres, przed wprowadzeniem wpisz literke 'f' i potwierdz 'enter', a nastepnie podaj wartosc."
+            << "W przeciwnym wypadku 'T' i wartosc): ";
+        cin >> znak;
+
+        if(znak == 'f')
+        {
+            cin >> f;
+            T = 1 / f;
+        }
+        else if(znak == 'T')
+        {
+            cin >> T;
+        }
+        else
+        {
+            cout << "Zly znak";
+            exit(1);
+        }
+        
+        cout << "Predkosc liniowa wynosi: " << (2 * pi * r)/T << " m/s";     
+    }
+    if(option == 5)
+    {
+        double v = 0, r = 0;
+        cout << "Podaj predkosc liniowa: ";
+        cin >> v;
+        cout << "Podaj promien: ";
+        cin >> r;
+        cout << "Predkosc katowa wynosi: " << v / r << " rad/s";
+    }
+    if(option == 6)
+    {
+
+    }
+}
+
+/*int main()
+{
+    //free_fall();
+    circular_motion();
+    return 0;
+}*/
