@@ -110,11 +110,3 @@ void rzut_poziomy()
      
     }
 }
-
-
-
-int main()
-{
-    rzut_poziomy();
-    return 0;
-}
