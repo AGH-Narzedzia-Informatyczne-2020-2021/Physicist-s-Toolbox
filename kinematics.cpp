@@ -1,4 +1,3 @@
-//Funkcje do programu Physicist's Toolbox z zakresu kinematyki.
 #include <iostream>
 #include <string>
 #include <tgmath.h>
