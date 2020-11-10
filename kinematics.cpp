@@ -109,15 +109,9 @@ void rzut_poziomy()
         cout << "Predkosc koncowa skladowa wynosi: " << v << "m/s" << endl;
      
     }
-
-    cout << "Chcesz wykonac jeszcze jakies dzialanie(T/N)?: ";
-    cin >> koniec;
-    if(koniec == 'T' || koniec == 't')
-    {
-        rzut_poziomy();
-    }
-    
 }
+
+
 
 int main()
 {
