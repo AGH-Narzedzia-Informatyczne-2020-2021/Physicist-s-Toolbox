@@ -1,10 +1,52 @@
+#include <iostream>
+#include<cmath>
 using namespace std;
+enum Quarter { pierwsza = 1, druga = 2, trzecia = 3, czwarta = 4 };
 struct Charge {
 	double charge;
 	double xposition;
 	double yposition;
 	double distance;
+	unsigned int pos;
 };
+
+unsigned int findQuarter(double x0, double y0, double xpos, double ypos)
+//funcion which returns the number of quarter where the charge is located in regard to the examined point
+{
+	unsigned int pos;
+	if (x0 > xpos)
+	{
+		if (y0 > ypos)
+		{
+			pos = 1;
+		}
+		else
+		{
+			pos = 4;
+		}
+	}
+	else
+	{
+		if (y0 > ypos)
+		{
+			pos = 2;
+		}
+		else
+		{
+			pos = 3;
+		}
+	}
+	return pos;
+}
+
+double sinus(double x0, double y0, double xpos, double ypos, unsigned int quarter)
+{
+	double sinus = 0;
+	switch (pos)
+	{
+
+	}
+}
 
 void Intensity()
 {
@@ -51,6 +93,11 @@ void Intensity()
 	cout << "Y coordinate: ";
 	cin >> yres;
 
+	for (i = 0; i < n; ++i)
+	{
+		tablica[i].pos = findQuarter(xres, yres, tablica[i].xposition, tablica[i].yposition);
+	}
+
 	for (i = 0; i < n; i++)
 	{
 		double d = (tablica[i].xposition - xres) * (tablica[i].xposition - xres) + (tablica[i].yposition - yres) * (tablica[i].yposition - yres);
@@ -73,6 +120,6 @@ void Intensity()
 
 int main()
 {
-	Potential();
+	Intensity();
 	return 0;
 }
