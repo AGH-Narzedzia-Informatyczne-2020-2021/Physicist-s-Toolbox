@@ -1,51 +1,27 @@
 #include <iostream>
 #include<cmath>
+#include "constants.h"
 using namespace std;
-enum Quarter { pierwsza = 1, druga = 2, trzecia = 3, czwarta = 4 };
+
 struct Charge {
 	double charge;
 	double xposition;
 	double yposition;
 	double distance;
-	unsigned int pos;
+	double sin0;
+	double cos0;
 };
 
-unsigned int findQuarter(double x0, double y0, double xpos, double ypos)
-//funcion which returns the number of quarter where the charge is located in regard to the examined point
+double sinus(double x0, double y0, double xpos, double ypos)
 {
-	unsigned int pos;
-	if (x0 > xpos)
-	{
-		if (y0 > ypos)
-		{
-			pos = 1;
-		}
-		else
-		{
-			pos = 4;
-		}
-	}
-	else
-	{
-		if (y0 > ypos)
-		{
-			pos = 2;
-		}
-		else
-		{
-			pos = 3;
-		}
-	}
-	return pos;
+	double sinus = (y0 - ypos) / sqrt((y0 - ypos) * (y0 - ypos) + (x0 - xpos) * (x0 - xpos));
+	return sinus;
 }
 
-double sinus(double x0, double y0, double xpos, double ypos, unsigned int quarter)
+double cosinus(double x0, double y0, double xpos, double ypos)
 {
-	double sinus = 0;
-	switch (pos)
-	{
-
-	}
+	double cosinus = (x0 - xpos) / sqrt((y0 - ypos) * (y0 - ypos) + (x0 - xpos) * (x0 - xpos));
+	return cosinus;
 }
 
 void Intensity()
@@ -95,26 +71,32 @@ void Intensity()
 
 	for (i = 0; i < n; ++i)
 	{
-		tablica[i].pos = findQuarter(xres, yres, tablica[i].xposition, tablica[i].yposition);
+		tablica[i].sin0 = sinus(xres, yres, tablica[i].xposition, tablica[i].yposition);
+		tablica[i].cos0 = cosinus(xres, yres, tablica[i].xposition, tablica[i].yposition);
 	}
 
 	for (i = 0; i < n; i++)
 	{
 		double d = (tablica[i].xposition - xres) * (tablica[i].xposition - xres) + (tablica[i].yposition - yres) * (tablica[i].yposition - yres);
 		tablica[i].distance = sqrt(d);
-		cout << tablica[i].distance << endl;
+		if (tablica[i].distance == 0) {
+			printf("ERROR");
+		}
+		//cout << tablica[i].distance << endl;
 	}
 
-	double resPotential = 0;
+	double resIntensX = 0, resIntensY = 0;
 
 	for (i = 0; i < n; i++)
 	{
-		resPotential += tablica[i].charge / tablica[i].distance;
+		resIntensX += (tablica[i].charge / (tablica[i].distance) * (tablica[i].distance)) * tablica[i].cos0;
+		resIntensY += (tablica[i].charge / (tablica[i].distance) * (tablica[i].distance)) * tablica[i].sin0;
 	}
 
+	double resIntens = sqrt((resIntensY * resIntensY) + (resIntensX * resIntensX)) * vacuumElectr;
 
-	cout << "Your resultantant potencial in the point (" << xres << " ; " << yres << ") equals: " << endl;
-	cout << resPotential << " Volts" << endl;
+	cout << "Your resultantant intensivity in the point (" << xres << " ; " << yres << ") equals: " << endl;
+	cout << resIntens << " Ampers" << endl;
 
 }
 
