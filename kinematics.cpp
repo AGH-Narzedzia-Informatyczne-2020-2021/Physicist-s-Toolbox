@@ -243,5 +243,6 @@ void circular_motion()
 {
     //free_fall();
     circular_motion();
+    printf("ok");
     return 0;
 }*/
