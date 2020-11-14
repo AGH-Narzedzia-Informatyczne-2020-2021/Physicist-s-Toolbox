@@ -317,10 +317,3 @@ void kinematics()
 	else if(endOrNot == 'n' || endOrNot == 'N')
 		exit;  
 }
-
-int main()
-{
-    kinematics();
-
-    return 0;
-}
