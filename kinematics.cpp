@@ -133,7 +133,6 @@ void free_fall()
         << "3.Time of body free fall from height.\n"
         << "4.The speed at which a freely falling body will hit the ground.\n" ;
     int option = 0;
-    char koniec;
     cout << "\nOption nr: ";
     cin >> option;
     cout << endl;
@@ -187,7 +186,6 @@ void circular_motion()
         << "5.Angular speed regarding linear speed.\n"
         << "6.Centrifugal acceleration.\n";
     int option = 0;
-    char koniec;
     cout << "\nOption nr: ";
     cin >> option;
     cout << endl;
