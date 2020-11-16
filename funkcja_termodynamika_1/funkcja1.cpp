@@ -16,11 +16,11 @@ void TheFirstLaw()
   u=q+w;
   for(q<0)
   {
-    cout << "Internal energy decrease in the system is equal %d, u" << endl;
+    cout << "Internal energy decrease in the system is equal"<< u << endl;
   }
   else
   {
-   cout << "Internal energy increase in the system is equal %d, u" << endl; 
+   cout << "Internal energy increase in the system is equal" << u << endl; 
   }
 
 }
