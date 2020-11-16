@@ -9,7 +9,7 @@ int main()
 {
     cout << "Welcome to Physicist's Toolbox.\n";
     cout << "Which field of physics do you need help with? ";
-    cout << "Tutaj pojawi sie kod programu! Nadal trwaja prace!" << endl;
+    cout << "Tutaj pojawi sie kod programu! Nadal trwaja prace!\n";
     cout << "konflikt";
     cout << "Zmiana, żeby spowodować konfikt";
     return 0;
