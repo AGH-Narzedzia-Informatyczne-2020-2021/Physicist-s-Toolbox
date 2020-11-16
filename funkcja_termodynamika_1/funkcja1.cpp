@@ -6,11 +6,11 @@
 
 void TheFirstLaw()
 {
-	cout << "The first law of thermodynamics is also known as The Law of Conservation of Energy" << endl;
-	unsigned double q;
+  cout << "The first law of thermodynamics is also known as The Law of Conservation of Energy" << endl;
+  unsigned double q;
   cout << "Type how much heat was supplied to the system:" << endl;
   cin >> q;
-	cout << "Type how much work was done on the layout:" << endl;
+  cout << "Type how much work was done on the layout:" << endl;
   unsigned double w;
   cin >> w;
   u=q+w;
