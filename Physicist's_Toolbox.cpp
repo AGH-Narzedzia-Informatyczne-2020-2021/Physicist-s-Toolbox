@@ -7,7 +7,8 @@ using namespace std;
 
 int main()
 {
-    cout << "Wprowadź dziedzinę fizyki: ";
+    cout << "Welcome to Physicist's Toolbox.\n";
+    cout << "Which field of physics do you need help with? ";
     cout << "Tutaj pojawi sie kod programu! Nadal trwaja prace!" << endl;
     cout << "konflikt";
     cout << "Zmiana, żeby spowodować konfikt";
