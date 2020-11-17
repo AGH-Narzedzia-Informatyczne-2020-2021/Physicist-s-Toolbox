@@ -13,6 +13,3 @@
  <details><summary>GISTS</summary>
  https://gist.github.com/miklimek/3966d47ad58eb623654fc472680a6fd9
  https://gist.github.com/miklimek/c861b6618b1546029a27fd7bd5176c86</details>
- 
- <details><summary>GitHubPages</summary>
- https://miklimek.github.io/</details>
