@@ -1,6 +1,7 @@
 //Merged elelectrostatics
 #include <iostream>
 #include "constants.h"
+#include <cmath>
 
 using mainspace std;
 
@@ -248,7 +249,7 @@ void Intensity()
 
 int main()
 {
-	cout << "\nYour chosen field: gravitation\n\nWhat function are you looking for?\n";
+	cout << "\nYour chosen field: electrostatics\n\nWhat function are you looking for?\n";
 	cout << "The resultant electrical force caused by n objects (1) \n";
 	cout << "The resultant ponetnial caused by n objects (2)\n";
 	cout << "The resultant intensity caused by n objects (3)\n\n";
