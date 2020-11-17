@@ -80,7 +80,7 @@ void Force()
 		tablica[i].cos0 = cosinus(xres, yres, tablica[i].xposition, tablica[i].yposition);
 	}
 
-	for (i = 0; i < n; i++)
+	for (i = 0; i < n; ++i)
 	{
 		double d = (tablica[i].xposition - xres) * (tablica[i].xposition - xres) + (tablica[i].yposition - yres) * (tablica[i].yposition - yres);
 		tablica[i].distance = sqrt(d);
@@ -98,7 +98,7 @@ void Force()
 		resForceY += (tablica[i].charge / (tablica[i].distance) * (tablica[i].distance)) * tablica[i].sin0;
 	}
 
-	double resForce = sqrt((resForceY * resForceY) + (resForceX * resForceX)) * vacuumElectr * char0;
+	double resForce = sqrt((resForceY * resForceY) + (resForceX * resForceX)) * CoulombConst * char0;
 
 	cout << "Resultantant force wchich acts on the charge " << char0 << "in the point (" << xres << " ; " << yres << ") equals: " << endl;
 	cout << resForce << " Newtons" << endl;
@@ -118,7 +118,7 @@ void Potential()
 	struct Charge tablica[n];
 
 	int i;
-	for (i = 0; i < n; i++)
+	for (i = 0; i < n; ++i)
 	{
 		struct Charge charge0;
 		cout << endl << "Object number " << i + 1 << endl << endl;
@@ -148,7 +148,7 @@ void Potential()
 	cout << "Y coordinate: ";
 	cin >> yres;
 
-	for (i = 0; i < n; i++)
+	for (i = 0; i < n; ++i)
 	{
 		double d = (tablica[i].xposition - xres) * (tablica[i].xposition - xres) + (tablica[i].yposition - yres) * (tablica[i].yposition - yres);
 		tablica[i].distance = sqrt(d);
@@ -162,7 +162,7 @@ void Potential()
 		resPotential += tablica[i].charge / tablica[i].distance;
 	}
 
-	resPotential *= vacuumElectr;
+	resPotential *= CoulombConst;
 
 	cout << "Your resultantant potencial in the point (" << xres << " ; " << yres << ") equals: " << endl;
 	cout << resPotential << " Volts" << endl;
@@ -238,7 +238,7 @@ void Intensity()
 		resIntensY += (tablica[i].charge / (tablica[i].distance) * (tablica[i].distance)) * tablica[i].sin0;
 	}
 
-	double resIntens = sqrt((resIntensY * resIntensY) + (resIntensX * resIntensX)) * vacuumElectr;
+	double resIntens = sqrt((resIntensY * resIntensY) + (resIntensX * resIntensX)) * CoulombConst;
 
 	cout << "Your resultantant intensivity in the point (" << xres << " ; " << yres << ") equals: " << endl;
 	cout << resIntens << " Ampers" << endl;
