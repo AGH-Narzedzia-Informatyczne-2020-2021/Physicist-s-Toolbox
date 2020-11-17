@@ -1,9 +1,11 @@
 #include <iostream>
+#include <cmath>
 using mainspace std;
 
 int main()
-{		
-	int zmienna;
-	cout << zmienna << endl;
+{
+	cout << "optics" << endl;
+	cout << "conflict" << endl;
+
 	return 0;
 }
