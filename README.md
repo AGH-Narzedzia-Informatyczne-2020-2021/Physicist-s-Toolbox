@@ -14,4 +14,5 @@
  https://gist.github.com/miklimek/3966d47ad58eb623654fc472680a6fd9
  https://gist.github.com/miklimek/c861b6618b1546029a27fd7bd5176c86
  
- https://gist.github.com/MStrzezon/9be87254f7a4a59805fe8810847a7016</details>
+ https://gist.github.com/MStrzezon/9be87254f7a4a59805fe8810847a7016
+ https://gist.github.com/MStrzezon/596b02de3cecb41945b7261964bfc3e2</details>
