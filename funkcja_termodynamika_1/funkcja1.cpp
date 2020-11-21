@@ -6,21 +6,21 @@
 
 void TheFirstLaw()
 {
-  cout << "The first law of thermodynamics is also known as The Law of Conservation of Energy" << endl;
+  std::cout << "The first law of thermodynamics is also known as The Law of Conservation of Energy" << endl;
   unsigned double q;
-  cout << "Type how much heat was supplied to the system:" << endl;
-  cin >> q;
-  cout << "Type how much work was done on the layout:" << endl;
+  std::cout << "Type how much heat was supplied to the system:" << endl;
+  std::cin >> q;
+  std::cout << "Type how much work was done on the layout:" << endl;
   unsigned double w;
-  cin >> w;
+  std::cin >> w;
   u=q+w;
   for(q<0)
   {
-    cout << "Internal energy decrease in the system is equal"<< u << endl;
+   std::cout << "Internal energy decrease in the system is equal"<< u << endl;
   }
   else
   {
-   cout << "Internal energy increase in the system is equal" << u << endl; 
+   std::cout << "Internal energy increase in the system is equal" << u << endl; 
   }
 
 }
