@@ -10,7 +10,7 @@ int main ()
   double q;
   std::cout << "Type how much heat was supplied to the system:" << std::endl;
   std::cin >> q;
-  std::cout << "Type how much work was done on the layout:" << std::endl;
+  std::cout << "Type how much work was done on the system:" << std::endl;
   double w;
   std::cin >> w;
   double u;
