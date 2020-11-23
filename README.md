@@ -18,7 +18,8 @@
  https://gist.github.com/MStrzezon/596b02de3cecb41945b7261964bfc3e2
  
  https://gist.github.com/PaulinaGacek/46bdc7e50310fe6abc79878166a7a4a4
- https://gist.github.com/PaulinaGacek/9b9edd689799b49b4b101c5dbd3acec5 </details>
-
- https://gist.github.com/Julia-Pl1/80aedf9bf97ba00f6d22f66ae4c6b918#file-gist-number-1
- https://gist.github.com/Julia-Pl1/d4e47368004a57e78c80677f41a67eb1#file-gist-number-2
+ https://gist.github.com/PaulinaGacek/9b9edd689799b49b4b101c5dbd3acec5 
+ 
+ https://gist.github.com/Julia-Pl1/80aedf9bf97ba00f6d22f66ae4c6b918#file-gist-number-1 
+ 
+ https://gist.github.com/Julia-Pl1/d4e47368004a57e78c80677f41a67eb1#file-gist-number-2</details>
