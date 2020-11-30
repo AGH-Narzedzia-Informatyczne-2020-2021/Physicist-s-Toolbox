@@ -256,6 +256,7 @@ int main()
 	cout << "Function: ";
 	int choice = 1;
 	cout << "\n";
+	cin >> choice;
 
 	switch (choice)
 	{
