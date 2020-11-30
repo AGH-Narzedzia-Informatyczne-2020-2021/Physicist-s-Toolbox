@@ -2,6 +2,7 @@
 #include <string>
 #include <tgmath.h>
 #include "constants.h"
+#include "kinematics.h"
 
 using namespace std;
 
