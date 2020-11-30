@@ -3,7 +3,7 @@
 #include "constants.h"
 #include <cmath>
 
-using mainspace std;
+using namespace std;
 
 struct Charge {
 	double charge;
