@@ -10,5 +10,7 @@ void gravitationalAcceleration();
 void workAgainstGravity();
 void latitudeWeight();
 void gravitation();
-
+void kinematics();
+void electrostatics();
+void thermodynamics();
 #endif 
