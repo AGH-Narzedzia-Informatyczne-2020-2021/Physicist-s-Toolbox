@@ -3,7 +3,7 @@
 #include "constants.h"
 #include <cmath>
 
-using mainspace std;
+using namespace std;
 
 struct Charge {
 	double charge;
@@ -256,6 +256,7 @@ int main()
 	cout << "Function: ";
 	int choice = 1;
 	cout << "\n";
+	cin >> choice;
 
 	switch (choice)
 	{
