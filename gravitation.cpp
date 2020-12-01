@@ -3,7 +3,6 @@
 #include "constants.h"
 #include "declarations.h"
 
-
 double inputValidator()
 {
 	double input{};
@@ -27,6 +26,8 @@ double inputValidator()
 
 void gravitationalForce()
 {
+	std::cout << "Your function of choice: gravitational force!\n"
+		<< "---------------------------------------------------------------------------\n\n";
 	std::cout << "Enter the mass of the first object: ";
 	double mass1{ inputValidator() };
 	std::cout << "Enter the mass of the second object: ";
@@ -40,6 +41,8 @@ void gravitationalForce()
 
 void potentialEnergy()
 {
+	std::cout << "Your function of choice: potential energy!\n"
+		<< "---------------------------------------------------------------------------\n\n";
 	std::cout << "Enter the mass of the first object: ";
 	double mass1{ inputValidator() };
 	std::cout << "Enter the mass of the second object: ";
@@ -53,6 +56,8 @@ void potentialEnergy()
 
 void gravitationalPotential()
 {
+	std::cout << "Your function of choice: gravitational potential!\n"
+		<< "---------------------------------------------------------------------------\n\n";
 	std::cout << "Enter the mass of the object: ";
 	double mass{ inputValidator() };
 	std::cout << "Enter the distance between the object and the point: ";
@@ -64,6 +69,8 @@ void gravitationalPotential()
 
 void escapeVelocity()
 {
+	std::cout << "Your function of choice: escape velocity!\n"
+		<< "---------------------------------------------------------------------------\n\n";
 	std::cout << "Enter the mass of the planet: ";
 	double mass{ inputValidator() };
 	std::cout << "Enter the radius of the planet: ";
@@ -75,6 +82,8 @@ void escapeVelocity()
 
 void gravitationalAcceleration()
 {
+	std::cout << "Your function of choice: gravitational acceleration!\n"
+		<< "---------------------------------------------------------------------------\n\n";
 	std::cout << "Enter the mass of the planet: ";
 	double mass{ inputValidator() };
 	std::cout << "Enter the radius of the planet: ";
@@ -86,6 +95,8 @@ void gravitationalAcceleration()
 
 void workAgainstGravity()
 {
+	std::cout << "Your function of choice: work done against gravity!\n"
+		<< "---------------------------------------------------------------------------\n\n";
 	std::cout << "Enter the mass of the object you're moving: ";
 	double mass1{ inputValidator() };
 	std::cout << "Enter the mass of the other object: ";
@@ -101,6 +112,8 @@ void workAgainstGravity()
 
 void latitudeWeight()
 {
+	std::cout << "Your function of choice: weight at given latitude!\n"
+		<< "---------------------------------------------------------------------------\n\n";
 	std::cout << "Enter the latitude in degrees: ";
 	double latitude{ inputValidator() * pi / 180 };
 	std::cout << "Enter the mass of the object: ";
@@ -111,9 +124,52 @@ void latitudeWeight()
 	std::cout << "\nThe weight of the object at that latitude is equal to: " << weight << " N\n";
 }
 
+void gravityChoice()
+{
+	int choice{ static_cast<int>(inputValidator()) };
+	std::cout << '\n';
+
+	switch (choice)
+	{
+	case 1:
+		std::cout << "---------------------------------------------------------------------------\n";
+		gravitationalForce();
+		break;
+	case 2:
+		std::cout << "---------------------------------------------------------------------------\n";
+		potentialEnergy();
+		break;
+	case 3:
+		std::cout << "---------------------------------------------------------------------------\n";
+		gravitationalPotential();
+		break;
+	case 4:
+		std::cout << "---------------------------------------------------------------------------\n";
+		escapeVelocity();
+		break;
+	case 5:
+		std::cout << "---------------------------------------------------------------------------\n";
+		gravitationalAcceleration();
+		break;
+	case 6:
+		std::cout << "---------------------------------------------------------------------------\n";
+		workAgainstGravity();
+		break;
+	case 7:
+		std::cout << "---------------------------------------------------------------------------\n";
+		latitudeWeight();
+		break;
+	default:
+		std::cout << "The number you've chosen does not correspond to any available function. Please try again: ";
+		gravityChoice();
+	}
+}
+
 void gravitation()
 {
-	std::cout << "\nYour chosen field: gravitation\n\nWhat function are you looking for?\n"
+	std::cout << "Your chosen field: gravitation\n"
+		<< "---------------------------------------------------------------------------\n"
+		<< "What function are you looking for?\n\n"
 		<< " - gravitational force(1)\n"
 		<< " - potential energy(2)\n"
 		<< " - gravitational potential(3)\n"
@@ -122,44 +178,17 @@ void gravitation()
 		<< " - work done against the gravitational force(6)\n"
 		<< " - weight of an object at given latitude on Earth(7)\n\n"
 		<< "Function: ";
-	int choice{static_cast<int>(inputValidator())};
-	std::cout << '\n';
-
-	switch (choice)
-	{
-	case 1:
-		gravitationalForce();
-		break;
-	case 2:
-		potentialEnergy();
-		break;
-	case 3:
-		gravitationalPotential();
-		break;
-	case 4:
-		escapeVelocity();
-		break;
-	case 5:
-		gravitationalAcceleration();
-		break;
-	case 6:
-		workAgainstGravity();
-		break;
-	case 7:
-		latitudeWeight();
-		break;
-	default:
-		std::cout << "The number you chose does not correspond to any available function. Please try again.\n";
-		gravitation();
-	}
+	gravityChoice();
 	
+	std::cout << "\n---------------------------------------------------------------------------\n";
 	std::cout << "\nDo you wish to calculate anything else? (Y/N): ";
 	char endOrNot;
 	std::cin >> endOrNot;
 	std::cin.ignore(32767, '\n');
 	
 	if (endOrNot == 'y' || endOrNot == 'Y')
+	{
+		std::cout << "---------------------------------------------------------------------------\n";
 		gravitation();
-	else
-		std::exit;
+	}
 }
