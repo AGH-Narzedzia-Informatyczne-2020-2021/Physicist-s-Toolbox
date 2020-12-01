@@ -2,6 +2,7 @@
 #include <iostream>
 #include <string>
 #include <tgmath.h>
+#include "constants.h"
 
 int main ()
 {
