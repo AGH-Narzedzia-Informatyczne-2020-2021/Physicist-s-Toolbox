@@ -44,7 +44,8 @@ int main()
 	fieldChoice();
 
 	std::cout << "\n---------------------------------------------------------------------------\n";
-	std::cout << "Thank you for using Physicist's Toolbox! Have a nice day!\n";
-	
+	std::cout << "Thank you for using Physicist's Toolbox! Have a nice day!";
+	std::cout << "\n---------------------------------------------------------------------------\n";
+
 	return 0;
 }
