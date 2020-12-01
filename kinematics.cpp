@@ -8,7 +8,7 @@ using namespace std;
 
 void horizontal_projection()
 {
-    cout << "Your choice: horizontal projection! Choose  what you want to calculate(1-7):\n\n"
+    cout << "Your choice: horizontal projection! Choose what you want to calculate(1-7):\n\n"
         << "1.Vertical speed in the moment.\n"
         << "2.Horizontal speed in the moment.\n"
         << "3.Total speed in the moment.\n"
