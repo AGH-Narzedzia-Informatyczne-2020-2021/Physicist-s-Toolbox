@@ -33,12 +33,50 @@ void Snellaw()
     }
 }
 
+void LensMaker()
+{
+    cout << "Which variable do You want to calculate?" << endl;
+    cout << "(1) f" << endl << "(2) x" << endl << "(3) y" << endl;
+    unsigned int a = 1;
+    cin >> a;
+    float x, y, f;
+    switch (a)
+    {
+    case 1:
+        cout << "Input the value of x expressed in meters: " << endl;
+        cin >> x;
+        cout << "Input the value of y expressed in meters: " << endl;
+        cin >> y;
+        f = (x * y) / (x + y);
+        cout << "Searched value of f equals: " << f << " meters" << endl;
+        break;
+
+    case 2:
+        cout << "Input the value of f expressed in meters: " << endl;
+        cin >> f;
+        cout << "Input the value of y expressed in meters: " << endl;
+        cin >> y;
+        x = (f * y) / (y - f);
+        cout << "Searched value of x equals: " << x << " meters" << endl;
+        break;
+
+    case 3:
+        cout << "Input the value of f expressed in meters: " << endl;
+        cin >> f;
+        cout << "Input the value of x expressed in meters: " << endl;
+        cin >> y;
+        x = (f * x) / (x - f);
+        cout << "Searched value of y equals: " << y << " meters" << endl;
+        break;
+    }
+}
+
 
 int main()
 {
     cout << "\nYour chosen field: optics\n\nWhich function are you looking for?\n";
     cout << "The Snell's Law  (1) \n";
-    //	cout << "The resultant ponetnial caused by n objects (2)\n";
+    cout << "The lens Maker's equation (2)\n";
     //	cout << "The resultant intensity caused by n objects (3)\n\n";
     cout << "Function: ";
     int choice = 1;
@@ -50,12 +88,12 @@ int main()
     case 1:
         Snellaw();
         break;
-        /*case 2:
-            Potential();
-            break;
-        case 3:
-            Intensity();
-            break; */
+    case 2:
+        LensMaker();
+        break;
+        /*case 3:
+        Intensity();
+        break; */
     }
     return 0;
 }
