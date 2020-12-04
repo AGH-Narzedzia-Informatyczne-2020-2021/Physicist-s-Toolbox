@@ -1,6 +1,7 @@
 #include <iostream>
 #include <cmath>
 #include <math.h>
+#include <stdlib.h>
 
 using namespace std;
 
@@ -71,13 +72,40 @@ void LensMaker()
     }
 }
 
+void Magnification()
+{
+    float x, y, p = 0;
+    unsigned int choice = 1;
+    cout << "Which set of data do you have: " << endl << "Hight of the object and the picture (1)" << endl;
+    cout << "Distance of the object and the picture from the lens (2)" << endl;
+    cin >> choice;
+    switch (choice)
+    {
+    case 1:
+        cout << "Input the hight of an object: ";
+        cin >> x;
+        cout << "Input the hight of a picture: ";
+        cin >> y;
+        break;
+    case 2:
+        cout << "Input the distance of an object from the lens (x): ";
+        cin >> x;
+        cout << "Input the distance of an picture from the lens (y): ";
+        cin >> y;
+        break;
+    }
+    p = abs(y / x);
+    cout << endl << "Magnification equals: " << p << endl;
+
+}
+
 
 int main()
 {
     cout << "\nYour chosen field: optics\n\nWhich function are you looking for?\n";
     cout << "The Snell's Law  (1) \n";
     cout << "The lens Maker's equation (2)\n";
-    //	cout << "The resultant intensity caused by n objects (3)\n\n";
+    cout << "Magnification of an object (3)\n\n";
     cout << "Function: ";
     int choice = 1;
     cout << "\n";
@@ -91,9 +119,9 @@ int main()
     case 2:
         LensMaker();
         break;
-        /*case 3:
-        Intensity();
-        break; */
+    case 3:
+        Magnification();
+        break;
     }
     return 0;
 }
