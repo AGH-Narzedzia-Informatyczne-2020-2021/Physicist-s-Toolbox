@@ -170,13 +170,13 @@ void gravitation()
 	std::cout << "Your chosen field: gravitation\n"
 		<< "---------------------------------------------------------------------------\n"
 		<< "What function are you looking for?\n\n"
-		<< " - gravitational force(1)\n"
-		<< " - potential energy(2)\n"
-		<< " - gravitational potential(3)\n"
-		<< " - escape velocity(4)\n"
-		<< " - gravitational acceleration(5)\n"
-		<< " - work done against the gravitational force(6)\n"
-		<< " - weight of an object at given latitude on Earth(7)\n\n"
+		<< " - gravitational force (1)\n"
+		<< " - potential energy (2)\n"
+		<< " - gravitational potential (3)\n"
+		<< " - escape velocity (4)\n"
+		<< " - gravitational acceleration (5)\n"
+		<< " - work done against the gravitational force (6)\n"
+		<< " - weight of an object at given latitude on Earth (7)\n\n"
 		<< "Function: ";
 	gravityChoice();
 	
@@ -188,7 +188,7 @@ void gravitation()
 	
 	if (endOrNot == 'y' || endOrNot == 'Y')
 	{
-		std::cout << "---------------------------------------------------------------------------\n";
+		std::cout << "\n---------------------------------------------------------------------------\n";
 		gravitation();
 	}
 }

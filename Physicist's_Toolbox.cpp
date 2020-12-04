@@ -36,10 +36,10 @@ int main()
 		<< "Please remember to use International System of Units (SI)\n" 
 		<< "---------------------------------------------------------------------------\n"
 		<< "Which field of physics do you need help with today?\n\n"
-		<< " - elctrostatics(1)\n"
-		<< " - thermodynamics(2)\n"
-		<< " - gravitation(3)\n"
-		<< " - kinematics(4)\n\n"
+		<< " - elctrostatics (1)\n"
+		<< " - thermodynamics (2)\n"
+		<< " - gravitation (3)\n"
+		<< " - kinematics (4)\n\n"
 		<< "Field: ";
 	fieldChoice();
 
