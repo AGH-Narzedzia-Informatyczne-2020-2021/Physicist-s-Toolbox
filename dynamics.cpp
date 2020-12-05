@@ -283,9 +283,3 @@ void dynamics()
     else if(endOrNot == 'n' || endOrNot == 'N')
         exit;
 }
-
-int main()
-{
-    dynamics();
-    return 0;
-}
