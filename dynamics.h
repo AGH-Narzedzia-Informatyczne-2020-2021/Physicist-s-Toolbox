@@ -3,5 +3,7 @@
 
 void slippery_slope_without_friction();
 void slippery_slope_with_friction();
+void Newtons_laws_of_motion();
+void Linear_momentum();
 
 #endif

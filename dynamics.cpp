@@ -88,7 +88,7 @@ void slippery_slope_with_friction()
     cout << "\nOption nr: ";
     cin >> option;
     cout << endl;
-    cout << "\nEnter the friction ratio(Otherwise, enter 0): ";
+    cout << "\nEnter the friction ratio: ";
     double friction;
     cin >> friction;
 
@@ -150,8 +150,142 @@ void slippery_slope_with_friction()
     }
 
 }
+
+void Newtons_laws_of_motion() {
+    cout << "\nYour choice: Newtons laws of motion! Choose what you want to calculate(1-7):\n\n"
+         << "1.The force.\n"
+         << "2.The weight.\n"
+         << "3.The acceleration.\n";
+    int option = 0;
+    cout << "\nOption nr: ";
+    cin >> option;
+    cout << endl;
+
+    if (option == 1)
+    {
+        double weight, acceleration;
+        cout << "Enter the weight of the body: ";
+        cin >> weight;
+        cout << "Enter the acceleration of the body: ";
+        cin >> acceleration;
+        cout << "The force is equal to: " << weight * acceleration << "N" << endl;
+    }
+    else if (option == 2)
+    {
+        double force, acceleration;
+        cout << "Enter the force: ";
+        cin >> force;
+        cout << "Enter the acceleration of the body: ";
+        cin >> acceleration;
+        cout << "The weight is equal to: " << force/acceleration << "kg" << endl;
+    }
+    else if (option == 3)
+    {
+        double weight, force;
+        cout << "Enter the force: ";
+        cin >> force;
+        cout << "Enter the weight of the body: ";
+        cin >> weight;
+        cout << "The acceleration is equal to: " << force / weight << "m/s^2" << endl;
+    }
+    else
+    {
+        cout << "The number you chose does not correspond to any available function. Please try again.\n\n";
+        Newtons_laws_of_motion();
+    }
+}
+
+void Linear_momentum() {
+    cout << "\nYour choice: Linear momentum! Choose what you want to calculate(1-7):\n\n"
+         << "1.The linear momentum.\n"
+         << "2.The speed.\n"
+         << "3.The weight.\n";
+    int option = 0;
+    cout << "\nOption nr: ";
+    cin >> option;
+    cout << endl;
+
+    if (option == 1)
+    {
+        double weight, speed;
+        cout << "Enter the weight of the body: ";
+        cin >> weight;
+        cout << "Enter the speed of the body: ";
+        cin >> speed;
+        cout << "The linear momentum is equal to: " << weight * speed << "kg*m/s" << endl;
+    }
+    else if (option == 2)
+    {
+        double momentum, weight;
+        cout << "Enter the weight of the body: ";
+        cin >> weight;
+        cout << "Enter the linear momentum of the body: ";
+        cin >> momentum;
+        cout << "The weight is equal to: " << momentum/weight << "m/s" << endl;
+    }
+    else if (option == 3)
+    {
+        double momentum, speed;
+        cout << "Enter the linear momentum: ";
+        cin >> momentum;
+        cout << "Enter the speed of the body: ";
+        cin >> speed;
+        cout << "The acceleration is equal to: " << momentum / speed << "kg" << endl;
+    }
+    else
+    {
+        cout << "The number you chose does not correspond to any available function. Please try again.\n\n";
+        Linear_momentum();
+    }
+}
+
+void dynamics()
+{
+    cout << "\nYour chosen field: dynamics\nWhat function are you looking for?\n\n"
+         << "1.Slippery slope without friction\n"
+         << "2.Slippery slope with friction\n"
+         << "3.Newton's law of motion\n"
+         << "4.Linear momentum\n\n"
+         << "If you want to count the friction force on flat ground, enter angle = 0\n\n"
+         << "Function nr: ";
+    int choice;
+    cin >> choice;
+    cout << endl;
+
+    switch (choice)
+    {
+        case 1:
+            cout << "---------------------------------------------------------------------------\n";
+            slippery_slope_without_friction();
+            break;
+        case 2:
+            cout << "---------------------------------------------------------------------------\n";
+            slippery_slope_with_friction();
+            break;
+        case 3:
+            cout << "---------------------------------------------------------------------------\n";
+            Newtons_laws_of_motion();
+            break;
+        case 4:
+            cout << "---------------------------------------------------------------------------\n";
+            Linear_momentum();
+            break;
+        default:
+            cout << "The number you chose does not correspond to any available function. Please try again.\n\n";
+            dynamics();
+    }
+    cout << "\n---------------------------------------------------------------------------\n";
+    cout << "Do you wish to calculate anything else? (Y/N): ";
+    char endOrNot;
+    cin >> endOrNot;
+    if (endOrNot == 'y' || endOrNot == 'Y')
+        dynamics();
+    else if(endOrNot == 'n' || endOrNot == 'N')
+        exit;
+}
+
 int main()
 {
-    slippery_slope_with_friction();
+    dynamics();
     return 0;
 }
