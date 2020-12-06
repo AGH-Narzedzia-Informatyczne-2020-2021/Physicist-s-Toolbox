@@ -2,110 +2,317 @@
 #include <string>
 #include <tgmath.h>
 #include "constants.h"
+#include "kinematics.h"
 
 using namespace std;
 
-void rzut_poziomy()
+void horizontal_projection()
 {
-    cout << ("Wybrales rzut poziomy! Wybierz co chcesz policzyc(1-7):\n");
-    cout << ("1.Predkosc pionowa w danej chwili\n2.Predkosc pozioma w danej chwili\n3.Predkosc skladowa w danej chwili\n4.Wspolrzedne polozenia ciala\n5.Czas spadku(lotu)\n6.Zasieg rzutu\n7.Wartosc predkosci koncowej ciala\n");
+    cout << "Your choice: horizontal projection! Choose what you want to calculate(1-7):\n\n"
+        << "1.Vertical speed in the moment.\n"
+        << "2.Horizontal speed in the moment.\n"
+        << "3.Total speed in the moment.\n"
+        << "4.Coordinates of the body.\n" 
+        << "5.Fall time.\n"
+        << "6.Throw range.\n"
+        << "7.Final speed of the body.\n";
     int option = 0;
-    char koniec;
+    cout << "\nOption nr: ";
     cin >> option;
+    cout << endl;
 
-    if(option == 1) //Predkosc pionowa w danej chwili
+    if(option == 1) //Vertical speed in the moment
     {
         double h_0 = 0, t = 0, v_y = 0;
-        cout << "Podaj wysokosc(metry): ";
+        cout << "Enter height (metres): ";
         cin >> h_0;
-        cout << "Podaj czas od momentu wyrzutu(sekundy): ";
+        cout << "Enter the time from the throwing moment (seconds): ";
         cin >> t;
         if(sqrt(2*h_0/EarthGrav) < t)
         {
-            cout << "Cialo w podanym czasie juz bedzie na ziemi";
+            cout << "The body will already be on earth at the given time";
         }
         else
         {
             v_y = EarthGrav * t;
-            cout << v_y << "m/s" << endl; 
+            cout << v_y << "m/s\n"; 
         }
     
     }    
-    if(option == 2) //Predkosc pozioma w danej chwili
+    else if(option == 2) //2.Horizontal speed in the moment
     {
-        cout << "Na tym poziomie zakladamy brak oporow ruchu, a wiec predkosc poziome w kazdej chwili jest stala, rowna predkosci poziomej poczatkowej" << endl;   
+        cout << "At this level, we assume no wind resistance,"
+         << "so the horizontal speed is constant at all times, equal to the initial horizontal speed\n";   
     }
-    if(option == 3) //Predkosc skladowa w danej chwili
+    else if(option == 3) //Total speed in the moment
     {
         double h_0 = 0, t = 0, v_y = 0, v_x = 0, v = 0;
-        cout << "Podaj wysokosc(metry): ";
+        cout << "Enter the height (metres): ";
         cin >> h_0;
-        cout << "Podaj czas od momentu wyrzutu(sekundy): ";
+        cout << "Enter the time from the throwing moment (seconds): ";
         cin >> t;
-        cout << "Podaj predkosc poczatkowa pozioma(czyli z jaka wyrzucono cialo): ";
+        cout << "Enter the initial horizontal speed (m/s): ";
         cin >> v_x;
         if(sqrt(2*h_0/EarthGrav) < t)
         {
-            cout << "Cialo w podanym czasie juz bedzie na ziemi";
+            cout << "The body will already be on earth at the given time";
         }
         else
         {
             v_y = EarthGrav * t;
             v = sqrt((v_x * v_x)+(v_y * v_y));
-            cout << v << "m/s" << endl; 
+            cout << v << "m/s\n"; 
         }
      
     }
-    if(option == 4) //Wspolrzedne polozenia ciala
+    else if(option == 4) //Coordinates of the body
     {
         double h_0 = 0, t = 0, v_y = 0, h = 0, x = 0, v_x = 0;
-        cout << "Podaj wysokosc(metry): ";
+        cout << "Enter the height (metres): ";
         cin >> h_0;
-        cout << "Podaj czas od momentu wyrzutu(sekundy): ";
+        cout << "Enter the time from the throwing moment (seconds): ";
         cin >> t;
-        cout << "Podaj predkosc poczatkowa pozioma(czyli z jaka wyrzucono cialo): ";
+        cout << "Enter the initial horizontal speed (m/s): ";
         cin >> v_x;
         if(sqrt(2*h_0/EarthGrav) < t)
         {
-            cout << "Cialo w podanym czasie juz bedzie na ziemi";
+            cout << "The body will already be on earth at the given time";
         }
         else
         {
             h = (h_0 - ((EarthGrav * t * t)/2));
             x = v_x * t;
-            cout << "Cialo bedzie na wysokosci: " << h << "m, a oddalone w poziomie o: " << x << "m od punktu wyrzutu" << endl;
+            cout << "The body will be in height: " << h << "m, and horizontally spaced by: ";
+            cout << x << "m from the throw point\n";
         }
     
     }
-    if(option == 5) //Czas spadku(lotu)
+    else if(option == 5) //Fall time
     {
         double h = 0, t = 0;
-        cout << "Podaj wysokosc(metry): ";
+        cout << "Enter the height (metres): ";
+        cin >> h;
+        t = sqrt(2*h/EarthGrav);
+        cout << t << "s\n";
+    }
+    else if(option == 6) //Zasieg rzutu
+    {
+        double h_0 = 0, v_0 = 0, zasieg = 0;
+        cout << "Enter the height (metres): ";
+        cin >> h_0;
+        cout << "Enter the initial horizontal speed (m/s): ";
+        cin >> v_0;
+
+            zasieg = v_0 * sqrt((2 * h_0)/EarthGrav);
+            cout << zasieg << "m\n"; 
+    }
+    else if(option == 7) //Final speed of the body
+    {
+        double h_0 = 0, v_y = 0, v = 0, v_x = 0;
+        cout << "Enter the height (metres): ";
+        cin >> h_0;
+        cout << "Enter the initial horizontal speed (m/s): ";
+        cin >> v_x;
+        
+        v = sqrt((v_x * v_x) + (2 * EarthGrav * h_0));
+        cout << "Final speed of the body: " << v << "m/s\n";
+     
+    }
+    else
+    {
+        cout << "The number you chose does not correspond to any available function. Please try again.\n\n";
+        horizontal_projection();
+    }
+    
+}
+
+void free_fall()
+{
+    cout << "Your choice: free fall! What function are you looking for?\n\n"
+        << "1.The time it takes for the body to reach its maximum height when thrown upwards.\n"
+        << "2.The maximum height that the body can reach when thrown upwards.\n"
+        << "3.Time of body free fall from height.\n"
+        << "4.The speed at which a freely falling body will hit the ground.\n" ;
+    int option = 0;
+    cout << "\nOption nr: ";
+    cin >> option;
+    cout << endl;
+
+    if(option == 1) //Time-maximum height
+    {
+        double t = 0, v_0 = 0;
+        cout << "Enter the initial speed of the up throw (m/s): ";
+        cin >> v_0;
+        t = v_0 / EarthGrav;
+        cout << t << "s\n";
+    }    
+    else if(option == 2) //Maximum height
+    {
+        double v_0 = 0, h = 0;
+        cout << "Enter the initial speed of the up throw (m/s): ";
+        cin >> v_0;
+        h = (v_0 * v_0)/(2 * EarthGrav);
+        cout << h << "m\n";
+    }
+    else if(option == 3) //Time of free fall
+    {
+        double h = 0, t = 0;
+        cout << "Enter the height (metres): ";
         cin >> h;
         t = sqrt(2*h/EarthGrav);
         cout << t << "s" << endl;
     }
-    if(option == 6) //Zasieg rzutu
+    else if(option == 4) //The speed at which a freely falling body will hit the ground
     {
-        double h_0 = 0, v_0 = 0, zasieg = 0;
-        cout << "Podaj wysokosc(metry): ";
+        double h_0 = 0, v = 0;
+        cout << "Enter the height from which the body was dropped (metres): ";
         cin >> h_0;
-        cout << "Podaj predkosc poczatkowa(m/s): ";
-        cin >> v_0;
+        v = sqrt(2 * EarthGrav * h_0);
+        cout << v << "m/s\n";
+    }
+    else
+    {
+        cout << "The number you chose does not correspond to any available function. Please try again.\n\n";
+        free_fall();
+    }
+}
 
-            zasieg = v_0 * sqrt((2 * h_0)/EarthGrav);
-            cout << zasieg << "m" << endl; 
-    }
-    if(option == 7) //Wartosc predkosci koncowej ciala
+void circular_motion()
+{
+    cout << "Your choice: circular motion! What function are you looking for?\n\n"
+        << "1.Period and frequency in circular motion.\n"
+        << "2.Period (knowing the frequency).\n"
+        << "3.Frequency (knowing the period).\n"
+        << "4.Linear speed in a circular motion.\n"
+        << "5.Angular speed regarding linear speed.\n"
+        << "6.Centrifugal acceleration.\n";
+    int option = 0;
+    cout << "\nOption nr: ";
+    cin >> option;
+    cout << endl;
+
+    if(option == 1)//Period and frequency
     {
-        double h_0 = 0, v_y = 0, v = 0, v_x = 0;
-        cout << "Podaj wysokosc(metry): ";
-        cin >> h_0;
-        cout << "Podaj predkosc poczatkowa pozioma(czyli z jaka wyrzucono cialo): ";
-        cin >> v_x;
-        
-        v = sqrt((v_x * v_x) + (2 * EarthGrav * h_0));
-        cout << "Predkosc koncowa skladowa wynosi: " << v << "m/s" << endl;
-     
+        double n = 0, t = 60;
+        cout << "Enter the number of revolutions per minute: ";
+        cin >> n;
+        cout << "Frequency: " << n / t << " Hz\n";
+        cout << "Period: " << t / n << " s\n";
+    } 
+    else if(option == 2)//Period
+    {
+        double f = 0;
+        cout << "Enter the frequency: ";
+        cin >> f;
+        cout << "Period: " << 1/f << " s\n";
     }
+    else if(option == 3)//Frequency
+    {
+        double T = 0;
+        cout << "Enter the period: ";
+        cin >> T;
+        cout << "Frequency: " << 1/T << " Hz\n";
+    }
+    else if(option == 4)//Linear speed
+    {
+        double r = 0, T = 0, f = 0;
+        char sign;
+        cout << "Enter the radius of a circle (m): ";
+        cin >> r;
+        cout << "Enter the frequency or period"
+            << "(If you enter the period key in: 'f' and push 'enter', and enter the value."
+            << "Otherwise key in: 'T' and the value): ";
+        cin >> sign;
+
+        if(sign == 'f')
+        {
+            cin >> f;
+            T = 1 / f;
+        }
+        else if(sign == 'T')
+        {
+            cin >> T;
+        }
+        else
+        {
+            cout << "Inappropriate letter\n";
+            circular_motion();
+        }
+        
+        cout << "The linear speed: " << (2 * pi * r)/T << " m/s\n";     
+    }
+    else if(option == 5)//Angular speed
+    {
+        double v = 0, r = 0;
+        cout << "Enter the linear speed: ";
+        cin >> v;
+        cout << "Enter the radius of a circle: ";
+        cin >> r;
+        cout << "Angular speed: " << v / r << " rad/s\n";
+    }
+    else if(option == 6)//Centrifugal acceleration
+    {
+        double v = 0, r = 0, vk = 0, option2 = 0;
+        cout << "Enter the radius of a circle: ";
+        cin >> r;
+        cout << "Do you know the angular (1) or linear (2) speed? ";
+        cin >> option2;
+        if(option2 == 1)
+        {
+            cout << "Enter this speed (rad/s): ";
+            cin >> vk;
+            cout << "The centrifugal speed: " << vk * vk * r << "rad/s^2\n";
+        }
+        else if(option2 == 2)
+        {
+            cout << "Enter this speed (m/s): ";
+            cin >> v;
+            cout << "The centrifugal speed: " << v * v / r << "m/s^2\n";
+        }
+        
+    }
+    else
+    {
+        cout << "The number you chose does not correspond to any available function. Please try again.\n";
+        circular_motion();
+    }
+}
+
+void kinematics()
+{
+	cout << "\nYour chosen field: kinematics\nWhat function are you looking for?\n\n"
+		<< "1.Horizontal projection\n"
+		<< "2.Free fall\n"
+		<< "3.Circular motion\n\n"
+		<< "Function nr: ";
+    int choice;
+    cin >> choice;
+    cout << endl;
+
+	switch (choice)
+	{
+	case 1:
+        cout << "---------------------------------------------------------------------------\n";
+		horizontal_projection();
+		break;
+	case 2:
+        cout << "---------------------------------------------------------------------------\n";
+		free_fall();
+		break;
+	case 3:
+        cout << "---------------------------------------------------------------------------\n";
+		circular_motion();
+		break;
+	default:
+		cout << "The number you chose does not correspond to any available function. Please try again.\n\n";
+		kinematics();
+	}
+    cout << "\n---------------------------------------------------------------------------\n";
+    cout << "Do you wish to calculate anything else? (Y/N): ";
+	char endOrNot;
+	cin >> endOrNot;
+	if (endOrNot == 'y' || endOrNot == 'Y')
+		kinematics();
+	else if(endOrNot == 'n' || endOrNot == 'N')
+		exit;  
 }
