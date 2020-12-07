@@ -7,7 +7,7 @@ using namespace std;
 
 void slippery_slope_without_friction()
 {
-    cout << "\nYour choice: Slippery slope without friction! Choose what you want to calculate(1-7):\n\n"
+    cout << "\nYour choice: Slippery slope without friction! Choose what you want to calculate(1-5):\n\n"
          << "1.Body acceleration(slippery slope).\n"
          << "2.The time it takes for body to slide down from a given height.\n"
          << "3.Sine of the angle of the slope.\n"
@@ -78,7 +78,7 @@ void slippery_slope_without_friction()
 
 void slippery_slope_with_friction()
 {
-    cout << "\nYour choice: Slippery slope with friction! Choose what you want to calculate(1-7):\n\n"
+    cout << "\nYour choice: Slippery slope with friction! Choose what you want to calculate(1-5):\n\n"
          << "1.Body acceleration(slippery slope).\n"
          << "2.The time it takes for body to slide down from a given height.\n"
          << "3.The final speed.\n"
@@ -152,7 +152,7 @@ void slippery_slope_with_friction()
 }
 
 void Newtons_laws_of_motion() {
-    cout << "\nYour choice: Newtons laws of motion! Choose what you want to calculate(1-7):\n\n"
+    cout << "\nYour choice: Newtons laws of motion! Choose what you want to calculate(1-3):\n\n"
          << "1.The force.\n"
          << "2.The weight.\n"
          << "3.The acceleration.\n";
@@ -196,7 +196,7 @@ void Newtons_laws_of_motion() {
 }
 
 void Linear_momentum() {
-    cout << "\nYour choice: Linear momentum! Choose what you want to calculate(1-7):\n\n"
+    cout << "\nYour choice: Linear momentum! Choose what you want to calculate(1-3):\n\n"
          << "1.The linear momentum.\n"
          << "2.The speed.\n"
          << "3.The weight.\n";
@@ -282,4 +282,9 @@ void dynamics()
         dynamics();
     else if(endOrNot == 'n' || endOrNot == 'N')
         exit;
+}
+int main()
+{
+    dynamics();
+    return 0;
 }
