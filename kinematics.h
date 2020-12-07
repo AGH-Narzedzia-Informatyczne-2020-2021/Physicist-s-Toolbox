@@ -1,5 +1,5 @@
-#ifndef KINEMATICS_H
-#define KINEMATICS_H
+#ifndef KINEMATICS_HPP
+#define KINEMATICS_HPP
 
 void horizontal_projection();
 void free_fall();
