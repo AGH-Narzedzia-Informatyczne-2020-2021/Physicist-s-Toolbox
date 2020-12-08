@@ -31,5 +31,18 @@ void firstLaw();
 void idealGasLaw();
 void heat();
 
+void optics();
+void opticsChoice();
+void snellLaw();
+void imageFormation();
+void magnification();
+
+void dynamics();
+void dynChoice();
+void slippery_slope_without_friction();
+void slippery_slope_with_friction();
+void Newtons_laws_of_motion();
+void linear_momentum();
+
 
 #endif 
