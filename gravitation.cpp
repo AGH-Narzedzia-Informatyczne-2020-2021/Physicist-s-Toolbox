@@ -3,27 +3,6 @@
 #include "constants.h"
 #include "declarations.h"
 
-double inputValidator()
-{
-	double input{};
-	while (true)
-	{
-		std::cin >> input;
-		if (std::cin.fail())
-		{
-			std::cin.clear();
-			std::cin.ignore(32767,'\n');
-			std::cout << "\nInvalid input. Please try again.\n";
-		}
-		else
-		{
-			std::cin.ignore(32767, '\n');
-			break;
-		}
-	}
-	return input;
-}
-
 void gravitationalForce()
 {
 	std::cout << "Your function of choice: gravitational force!\n"
@@ -181,7 +160,7 @@ void gravitation()
 	gravityChoice();
 	
 	std::cout << "\n---------------------------------------------------------------------------\n";
-	std::cout << "\nDo you wish to calculate anything else? (Y/N): ";
+	std::cout << "\nDo you wish to calculate anything else in this field? (Y/N): ";
 	char endOrNot;
 	std::cin >> endOrNot;
 	std::cin.ignore(32767, '\n');

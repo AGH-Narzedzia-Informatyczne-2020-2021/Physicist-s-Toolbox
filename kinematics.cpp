@@ -37,13 +37,11 @@ void horizontal_projection()
             std::cout << "\nThe vertical speed is equal to: " << v_y << " m/s\n";
         }
     }
-
     else if (option == 2) //2.Horizontal speed in the moment
     {
         std::cout << "At this level we assume no wind resistance,"
             << "so the horizontal speed is constant at all times equal to the initial horizontal speed\n";
     }
-
     else if (option == 3) //Total speed in the moment
     {
         std::cout << "Enter the height: ";
@@ -64,7 +62,6 @@ void horizontal_projection()
             std::cout << "\nTotal speed is equal to: " << v << " m/s\n";
         }
     }
-
     else if (option == 4) //Coordinates of the body
     {
         std::cout << "Enter the height: ";
@@ -87,7 +84,6 @@ void horizontal_projection()
         }
 
     }
-
     else if (option == 5) //Fall time
     {
         std::cout << "Enter the height: ";
@@ -96,7 +92,6 @@ void horizontal_projection()
         auto t{ sqrt(2 * h / EarthGrav) };
         std::cout << "\nThe time of the fall is equal to: " << t << " s\n";
     }
-
     else if (option == 6) //flight distance
     {
         std::cout << "Enter the height: ";
@@ -107,7 +102,6 @@ void horizontal_projection()
         auto distance{ v_0 * sqrt((2 * h_0) / EarthGrav) };
         std::cout << "\nThe flight distance is equal to: " << distance << " m\n";
     }
-
     else if (option == 7) //Final speed of the body
     {
         std::cout << "Enter the height: ";
@@ -118,11 +112,10 @@ void horizontal_projection()
         auto v{ sqrt((v_x * v_x) + (2 * EarthGrav * h_0)) };
         std::cout << "Final speed of the body is equal to: " << v << " m/s\n";
     }
-
     else
     {
-        std::cout << "The number you've chosen does not correspond to any available function. Please try again.\n\n";
-        std::cin.ignore(32767, '\n');
+        std::cout << "The number you've chosen does not correspond to any available function. Please try again.\n"
+            << "\n---------------------------------------------------------------------------\n";
         horizontal_projection();
     }
 }
@@ -130,7 +123,7 @@ void horizontal_projection()
 void free_fall()
 {
     std::cout << "Your function of choice: free fall!\n"
-        << "---------------------------------------------------------------------------\n"
+        << "---------------------------------------------------------------------------\n\n"
         << "What do you want to calculate (1-4) :\n\n"
         << "The time it takes for the body to reach its maximum height when thrown upwards (1)\n"
         << "The maximum height that the body can reach when thrown upwards (2)\n"
@@ -149,7 +142,6 @@ void free_fall()
         auto t{ v_0 / EarthGrav };
         std::cout << "\nThe time it takes the object to reach maximum height is equal to: " << t << " s\n";
     }
-
     else if (option == 2) //Maximum height
     {
         std::cout << "Enter the initial speed of the up throw: ";
@@ -158,7 +150,6 @@ void free_fall()
         auto h{ (v_0 * v_0) / (2 * EarthGrav) };
         std::cout << "\nThe maxiumum height the object will reach is equal to: " << h << " m\n";
     }
-
     else if (option == 3) //Time of free fall
     {
         std::cout << "Enter the height: ";
@@ -167,7 +158,6 @@ void free_fall()
         auto t{ sqrt(2 * h / EarthGrav) };
         std::cout << "\nThe time of the fall is equal to: " << t << " s\n";
     }
-
     else if (option == 4) //The speed at which a freely falling body will hit the ground
     {
         std::cout << "Enter the height from which the body was dropped: ";
@@ -176,11 +166,10 @@ void free_fall()
         auto v{ sqrt(2 * EarthGrav * h_0) };
         std::cout << "\nThe final velocity is equal to: " << v << " m/s\n";
     }
-
     else
     {
-        std::cout << "The number you've chosen does not correspond to any available function. Please try again.\n\n";
-        std::cin.ignore(32767, '\n');
+        std::cout << "The number you've chosen does not correspond to any available function. Please try again.\n"
+            << "\n---------------------------------------------------------------------------\n";
         free_fall();
     }
 }
@@ -188,7 +177,7 @@ void free_fall()
 void circular_motion()
 {
     std::cout << "Your function of choice: circular motion!\n"
-        << "---------------------------------------------------------------------------\n"
+        << "---------------------------------------------------------------------------\n\n"
         << "What do you want to calculate (1-6):\n\n"
         << "Period and frequency in circular motion (1)\n"
         << "Period (knowing the frequency) (2)\n"
@@ -209,21 +198,18 @@ void circular_motion()
         std::cout << "\nFrequency is equal to: " << n / t << " Hz\n";
         std::cout << "Period is equal to: " << t / n << " s\n";
     }
-
     else if (option == 2)//Period
     {
         std::cout << "Enter the frequency: ";
         auto f{ inputValidator() };
         std::cout << "Period is equal to: " << 1 / f << " s\n";
     }
-
     else if (option == 3)//Frequency
     {
         std::cout << "Enter the period: ";
         auto T{ inputValidator() };
         std::cout << "Frequencyis equal to: " << 1 / T << " Hz\n";
     }
-
     else if (option == 4)//Linear speed
     {
         std::cout << "Enter the radius of a circle: ";
@@ -231,7 +217,7 @@ void circular_motion()
         double T{};
         std::cout << "\nChoose if you'll be entering frequency (f) or period (T)\n"
             << "Choice: ";
-        
+
         char sign;
         while (true)
         {
@@ -251,7 +237,7 @@ void circular_motion()
         if (sign == 'f')
         {
             auto f{ inputValidator() };
-            T = 1 / f ;
+            T = 1 / f;
         }
         else if (sign == 'T')
         {
@@ -260,7 +246,6 @@ void circular_motion()
 
         std::cout << "\nThe linear speed is equal to: " << (2 * pi * r) / T << " m/s\n";
     }
-
     else if (option == 5)//Angular speed
     {
         std::cout << "Enter the linear speed: ";
@@ -270,32 +255,39 @@ void circular_motion()
         
         std::cout << "\nAngular speed is equal to: " << v / r << " rad/s\n";
     }
-
     else if (option == 6)//Centrifugal acceleration
     {
         std::cout << "Enter the radius of a circle: ";
         auto r{ inputValidator() };
-        std::cout << "Do you know the angular (1) or linear (2) speed? ";
-        int option2{ static_cast<int>(inputValidator()) };
+        std::cout << "Do you know the angular (1) or linear (2) speed?";
+        std::cout << "Option: ";
 
-        if (option2 == 1)
+        while (true)
         {
-            std::cout << "Enter the angular speed: ";
-            auto vk{ inputValidator() };
-            std::cout << "\nThe centrifugal speed is equal to: " << vk * vk * r << " rad/s^2\n";
-        }
-        else if (option2 == 2)
-        {
-            std::cout << "Enter the linear speed: ";
-            auto v{ inputValidator() };
-            std::cout << "The centrifugal speed is equal to: " << v * v / r << " m/s^2\n";
+            int option2{ static_cast<int>(inputValidator()) };
+
+            if (option2 == 1)
+            {
+                std::cout << "\nEnter the angular speed: ";
+                auto vk{ inputValidator() };
+                std::cout << "\nThe centrifugal speed is equal to: " << vk * vk * r << " rad/s^2\n";
+                break;
+            }
+            else if (option2 == 2)
+            {
+                std::cout << "\nEnter the linear speed: ";
+                auto v{ inputValidator() };
+                std::cout << "\nThe centrifugal speed is equal to: " << v * v / r << " m/s^2\n";
+                break;
+            }
+            else
+                std::cout << "\nWrong number. Please try again: ";
         }
     }
-
     else
     {
-        std::cout << "The number you've chosen does not correspond to any available function. Please try again.\n";
-        std::cin.ignore(32767, '\n');
+        std::cout << "The number you've chosen does not correspond to any available function. Please try again.\n"
+            << "\n---------------------------------------------------------------------------\n";
         circular_motion();
     }
 }
@@ -337,7 +329,7 @@ void kinematics()
     kinChoice();
     
     std::cout << "\n---------------------------------------------------------------------------\n";
-    std::cout << "Do you wish to calculate anything else? (Y/N): ";
+    std::cout << "Do you wish to calculate anything else in this field? (Y/N): ";
     char endOrNot;
     std::cin >> endOrNot;
     std::cin.ignore(32767, '\n');
