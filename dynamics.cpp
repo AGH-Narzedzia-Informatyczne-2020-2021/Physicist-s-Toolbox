@@ -72,9 +72,6 @@ void slippery_slope_without_friction()
     {
         std::cout << "The number you've chosen does not correspond to any available function. Please try again\n"
             << "\n---------------------------------------------------------------------------\n";
-        slippery_slope_without_friction();
-    }
-}
 
 void slippery_slope_with_friction()
 {
@@ -158,7 +155,6 @@ void slippery_slope_with_friction()
             << "\n---------------------------------------------------------------------------\n";
         slippery_slope_with_friction();
     }
-
 }
 
 void Newtons_laws_of_motion() 
