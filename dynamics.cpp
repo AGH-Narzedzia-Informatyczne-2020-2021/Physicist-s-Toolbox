@@ -72,6 +72,8 @@ void slippery_slope_without_friction()
     {
         std::cout << "The number you've chosen does not correspond to any available function. Please try again\n"
             << "\n---------------------------------------------------------------------------\n";
+    }
+}
 
 void slippery_slope_with_friction()
 {
