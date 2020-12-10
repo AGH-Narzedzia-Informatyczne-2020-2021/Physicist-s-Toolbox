@@ -5,7 +5,7 @@
 #include "gravitation.cpp"
 #include "kinematics.cpp"
 #include "dynamics.cpp"
-#include "optics.cpp"
+#include "Optics.cpp"
 
 double inputValidator()
 {
