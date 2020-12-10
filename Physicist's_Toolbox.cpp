@@ -31,7 +31,7 @@ double inputValidator()
 void fieldChoice()
 {
 	std::cout << "Which field of physics do you need help with today?\n\n"
-		<< " - elctrostatics (1)\n"
+		<< " - electrostatics (1)\n"
 		<< " - thermodynamics (2)\n"
 		<< " - gravitation (3)\n"
 		<< " - kinematics (4)\n"
