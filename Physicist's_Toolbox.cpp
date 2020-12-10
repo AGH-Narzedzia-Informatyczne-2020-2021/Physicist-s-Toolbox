@@ -1,5 +1,11 @@
 #include <iostream>
 #include "declarations.h"
+#include "MergedElectrostatics.cpp"
+#include "thermodynamics.cpp"
+#include "gravitation.cpp"
+#include "kinematics.cpp"
+#include "dynamics.cpp"
+#include "optics.cpp"
 
 double inputValidator()
 {
