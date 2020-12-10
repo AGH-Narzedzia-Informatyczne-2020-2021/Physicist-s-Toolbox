@@ -1,290 +1,309 @@
 #include <iostream>
-#include <tgmath.h>
-#include "dynamics.h"
+#include <cmath>
 #include "constants.h"
-
-using namespace std;
+#include "declarations.h"
 
 void slippery_slope_without_friction()
 {
-    cout << "\nYour choice: Slippery slope without friction! Choose what you want to calculate(1-5):\n\n"
-         << "1.Body acceleration(slippery slope).\n"
-         << "2.The time it takes for body to slide down from a given height.\n"
-         << "3.Sine of the angle of the slope.\n"
-         << "4.The force parallel to the slippery slope.\n"
-         << "5.The final speed";
-    int option = 0;
-    cout << "\nOption nr: ";
-    cin >> option;
-    cout << endl;
+    std::cout << "Your function of choice: slippery slope without friction!\n"
+        << "---------------------------------------------------------------------------\n\n"
+        << "What do you want to calculate (1-5):\n\n"
+        << "Acceleration of the object on slippery slope (1)\n"
+        << "The time it takes for body to slide down from a given height (2)\n"
+        << "Sine of the angle of the slope (3)\n"
+        << "The force parallel to the slippery slope (4)\n"
+        << "The final speed (5)\n";
+    std::cout << "\nOption nr: ";
+    
+    int option{ static_cast<int>(inputValidator()) };
+    std::cout << '\n';
 
-    if (option == 1)
+    if (option == 1) // body acceleration
     {
-        double angle;
-        cout << "Enter angle of the slope (degrees): ";
-        cin >> angle;
-        cout << "\nBody acceleration: " << EarthGrav * sin(angle*pi/180) << " m/s^2" << endl;
+        std::cout << "Enter angle of the slope: ";
+        auto angle{ inputValidator() };
+
+        std::cout << "\nAcceleration of the object is equal to: " << EarthGrav * sin(angle * pi / 180) << " m/s^2\n";
     }
-    else if (option == 2)
+    else if (option == 2) // sliding time
     {
-        double angle, height, time, distance, acceleration;
-        cout << "Enter angle of the slope (degrees): ";
-        cin >> angle;
-        cout <<"\nEnter height of the body (metres): ";
-        cin >> height;
-        distance = height/sin(angle*pi/180);
-        acceleration = EarthGrav * sin(angle*pi/180);
-        time = sqrt(2*distance/acceleration);
-        cout << "\nTime: " << time << " s" << endl;
+        std::cout << "Enter angle of the slope: ";
+        auto angle{ inputValidator() };
+        std::cout << "Enter height of the body: ";
+        auto height{ inputValidator() };
+        
+        double distance = height / sin(angle * pi / 180);
+        double acceleration = EarthGrav * sin(angle * pi / 180);
+        double time = sqrt(2 * distance / acceleration);
+        std::cout << "\nSliding time is equal to: " << time << " s\n";
     }
-    else if (option == 3)
+    else if (option == 3) // sin of the angle
     {
-        double height, time, sine;
-        cout << "Enter the time of sliding the body: ";
-        cin >> time;
-        cout << "\nEnter the height from which body slides: ";
-        cin >> height;
-        sine = sqrt(2*height/EarthGrav/time/time);
-        cout << "\nSine: " << sine << endl;
+        std::cout << "Enter the time of sliding of the body: ";
+        auto time{ inputValidator() };
+        std::cout << "Enter the height from which body slides: ";
+        auto height{ inputValidator() };
+        double sine = sqrt(2 * height / EarthGrav / time / time);
+        std::cout << "\nSine of the angle is equal to: " << sine << '\n';
     }
-    else if (option == 4)
+    else if (option == 4) // parallel force
     {
-        double F, weight, angle;
-        cout << "Enter the weight of the body: ";
-        cin >> weight;
-        cout << "\nEnter the angle of the slippery slope: ";
-        cin >> angle;
-        F = weight * EarthGrav * sin(angle*pi/180);
-        cout << "\nThis Force is equal to: " << F << " N" << endl;
+        std::cout << "Enter the weight of the body: ";
+        auto weight{ inputValidator() };
+        std::cout << "Enter the angle of the slippery slope: ";
+        auto angle{ inputValidator() };
+        
+        double force = weight * EarthGrav * sin(angle * pi / 180);
+        std::cout << "\nParallel force is equal to: " << force << " N\n";
     }
-    else if(option == 5)
+    else if (option == 5) // final speed
     {
-        double height, angle, distance, acceleration, time;
-        cout << "Enter the height: ";
-        cin >> height;
-        cout << "Enter the angle: ";
-        cin >> angle;
-        distance = height/sin(angle*pi/180);
-        acceleration = EarthGrav * sin(angle*pi/180);
-        time = sqrt(2*distance/acceleration);
-        cout << "The final speed is equal to: " << acceleration * time << " m/s" << endl;
+        std::cout << "Enter the height: ";
+        auto height{ inputValidator() };
+        std::cout << "Enter the angle: ";
+        auto angle{ inputValidator() };
+
+        double distance = height / sin(angle * pi / 180);
+        double acceleration = EarthGrav * sin(angle * pi / 180);
+        double time = sqrt(2 * distance / acceleration);
+        std::cout << "\nThe final speed is equal to: " << acceleration * time << " m/s\n";
     }
     else
     {
-        cout << "The number you chose does not correspond to any available function. Please try again.\n\n";
-        slippery_slope_without_friction();
+        std::cout << "The number you've chosen does not correspond to any available function. Please try again\n"
+            << "\n---------------------------------------------------------------------------\n";
     }
 }
 
 void slippery_slope_with_friction()
 {
-    cout << "\nYour choice: Slippery slope with friction! Choose what you want to calculate(1-5):\n\n"
-         << "1.Body acceleration(slippery slope).\n"
-         << "2.The time it takes for body to slide down from a given height.\n"
-         << "3.The final speed.\n"
-         << "4.The net force(down, parallel to the slippery slope).\n"
-         << "5.The friction force.\n";
-    int option = 0;
-    cout << "\nOption nr: ";
-    cin >> option;
-    cout << endl;
-    cout << "\nEnter the friction ratio: ";
-    double friction;
-    cin >> friction;
+    std::cout << "Your function of choice: slippery slope with friction!\n"
+        << "---------------------------------------------------------------------------\n\n"
+        << "What do you want to calculate (1-5):\n\n"
+        << "Acceleration of the object on slippery slope (1)\n"
+        << "The time it takes for body to slide down from a given height (2)\n"
+        << "The final speed (3)\n"
+        << "The net force (down, parallel to the slippery slope) (4)\n"
+        << "The friction force (5)\n";
+    std::cout << "\nOption nr: ";
+    
+    int option{ static_cast<int>(inputValidator()) };
+    std::cout << '\n';
 
-    if (option == 1)
+    if (option == 1) //acceleration of the object
     {
-        double angle, acceleration;
-        cout << "\nEnter the angle of the slippery slope: ";
-        cin >> angle;
-        acceleration = EarthGrav*(sin(angle*pi/180) - (friction * cos(angle*pi/180)));
-        cout << "\nAcceleration is equal to: " << acceleration << " m/s^2" << endl;
+        std::cout << "Enter the friction ratio: ";
+        double friction{ inputValidator() };
+        std::cout << "Enter the angle of the slippery slope: ";
+        auto angle{ inputValidator() };
+        
+        double acceleration = EarthGrav * (sin(angle * pi / 180) - (friction * cos(angle * pi / 180)));
+        std:: cout << "\nAcceleration is equal to: " << acceleration << " m/s^2\n";
     }
-    else if (option == 2)
+    else if (option == 2) //sliding time
     {
-        double height, angle, time;
-        cout << "\nEnter the height of the slippery slope: ";
-        cin >> height;
-        cout << "\nEnter the angle of the slippery slope: ";
-        cin >> angle;
-        time = sqrt((2 * height)/(EarthGrav * sin(angle*pi/180) * (sin(angle*pi/180) - (friction * cos(angle*pi/180)))));
-        cout << "\nTime is equal to: " << time << " s" << endl;
+        std::cout << "Enter the friction ratio: ";
+        double friction{ inputValidator() };
+        std::cout << "Enter the height of the slippery slope: ";
+        auto height{ inputValidator() };
+        std:: cout << "Enter the angle of the slippery slope: ";
+        auto angle{ inputValidator() };
+        
+        double time = sqrt((2 * height) / (EarthGrav * sin(angle * pi / 180) * (sin(angle * pi / 180) - (friction * cos(angle * pi / 180)))));
+        std::cout << "\nSliding ime is equal to: " << time << " s\n";
     }
-    else if (option == 3)
+    else if (option == 3) //final speed
     {
-        double height, angle, speed;
-        cout << "\nEnter the height of the slippery slope: ";
-        cin >> height;
-        cout << "\nEnter the angle of the slippery slope: ";
-        cin >> angle;
-        speed = sqrt((2 * height * EarthGrav) * (sin(angle*pi/180) - (friction * cos(angle*pi/180))) / sin(angle*pi/180));
-        cout << "\nThe final speed is equal to: " << speed << " m/s" << endl;
+        std::cout << "Enter the friction ratio: ";
+        double friction{ inputValidator() };
+        std::cout << "Enter the height of the slippery slope: ";
+        auto height{ inputValidator() };
+        std::cout << "Enter the angle of the slippery slope: ";
+        auto angle{ inputValidator() };
+        
+        double speed = sqrt((2 * height * EarthGrav) * (sin(angle * pi / 180) - (friction * cos(angle * pi / 180))) / sin(angle * pi / 180));
+        std::cout << "\nThe final speed is equal to: " << speed << " m/s\n";
     }
-    else if (option == 4)
+    else if (option == 4) //net force
     {
-        double F, weight, angle, T, FN;
-        cout << "\nEnter the weight of the body: ";
-        cin >> weight;
-        cout << "\nEnter the angle of the slippery slope: ";
-        cin >> angle;
-        F = weight * EarthGrav * sin(angle * pi / 180);
-        FN = weight * EarthGrav * cos(angle*pi/180);
-        T = friction * FN;
-        cout << "\nThis Force is equal to: " << F - T << " N" << endl;
+        std::cout << "Enter the friction ratio: ";
+        double friction{ inputValidator() };
+        std::cout << "Enter the weight of the body: ";
+        auto weight{ inputValidator() };
+        std::cout << "Enter the angle of the slippery slope: ";
+        auto angle{ inputValidator() };
+        
+        double F = weight * EarthGrav * sin(angle * pi / 180);
+        double FN = weight * EarthGrav * cos(angle * pi / 180);
+        double T = friction * FN;
+        std::cout << "\nNet force is equal to: " << F - T << " N\n";
     }
-    else if (option == 5)
+    else if (option == 5) //friction force
     {
-        double weight, FN, T, angle;
-        cout << "\nEnter the weight of the body: ";
-        cin >> weight;
-        cout << "\nEnter the angle of the slippery slope: ";
-        cin >> angle;
-        FN = weight * EarthGrav * cos(angle*pi/180);
-        T = friction * FN;
-        cout << "\nThe friction force is equal to: " << T << " N" << endl;
+        std::cout << "Enter the friction ratio: ";
+        double friction{ inputValidator() };
+        std::cout << "Enter the weight of the body: ";
+        auto weight{ inputValidator() };
+        std::cout << "Enter the angle of the slippery slope: ";
+        auto angle{ inputValidator() };
+
+        double FN = weight * EarthGrav * cos(angle * pi / 180);
+        double T = friction * FN;
+        std::cout << "\nThe friction force is equal to: " << T << " N\n";
     }
     else
     {
-        cout << "The number you chose does not correspond to any available function. Please try again.\n\n";
+        std::cout << "The number you've chosen does not correspond to any available function. Please try again\n"
+            << "\n---------------------------------------------------------------------------\n";
         slippery_slope_with_friction();
     }
-
 }
 
-void Newtons_laws_of_motion() {
-    cout << "\nYour choice: Newtons laws of motion! Choose what you want to calculate(1-3):\n\n"
-         << "1.The force.\n"
-         << "2.The weight.\n"
-         << "3.The acceleration.\n";
-    int option = 0;
-    cout << "\nOption nr: ";
-    cin >> option;
-    cout << endl;
+void Newtons_laws_of_motion() 
+{
+    std::cout << "Your function of choice: Newtons laws of motion!\n"
+        << "---------------------------------------------------------------------------\n\n"
+        << "What do you want to calculate (1-3):\n\n"
+        << "The force (1)\n"
+        << "The weight (2)\n"
+        << "The acceleration (3)\n";
+    std::cout << "\nOption nr: ";
+    
+    int option{ static_cast<int>(inputValidator()) };
+    std::cout << '\n';
 
-    if (option == 1)
+    if (option == 1) //force
     {
-        double weight, acceleration;
-        cout << "Enter the weight of the body: ";
-        cin >> weight;
-        cout << "Enter the acceleration of the body: ";
-        cin >> acceleration;
-        cout << "The force is equal to: " << weight * acceleration << "N" << endl;
+        std::cout << "Enter the weight of the body: ";
+        auto weight{ inputValidator() };
+        std::cout << "Enter the acceleration of the body: ";
+        auto acceleration{ inputValidator() };
+        
+        std::cout << "\nThe force is equal to: " << weight * acceleration << " N\n";
     }
-    else if (option == 2)
+    else if (option == 2) //weight
     {
-        double force, acceleration;
-        cout << "Enter the force: ";
-        cin >> force;
-        cout << "Enter the acceleration of the body: ";
-        cin >> acceleration;
-        cout << "The weight is equal to: " << force/acceleration << "kg" << endl;
+        std::cout << "Enter the force: ";
+        auto force{ inputValidator() };
+        std::cout << "Enter the acceleration of the body: ";
+        auto acceleration{ inputValidator() };
+
+        std::cout << "\nThe weight is equal to: " << force / acceleration << " kg\n";
     }
-    else if (option == 3)
+    else if (option == 3) //acceleration
     {
-        double weight, force;
-        cout << "Enter the force: ";
-        cin >> force;
-        cout << "Enter the weight of the body: ";
-        cin >> weight;
-        cout << "The acceleration is equal to: " << force / weight << "m/s^2" << endl;
+        std::cout << "Enter the force: ";
+        auto force{ inputValidator() };
+        std::cout << "Enter the weight of the body: ";
+        auto weight{ inputValidator() };
+        std::cout << "\nThe acceleration is equal to: " << force / weight << " m/s^2\n";
     }
     else
     {
-        cout << "The number you chose does not correspond to any available function. Please try again.\n\n";
+        std::cout << "The number you've chosen does not correspond to any available function. Please try again\n"
+            << "\n---------------------------------------------------------------------------\n";
         Newtons_laws_of_motion();
     }
 }
 
-void Linear_momentum() {
-    cout << "\nYour choice: Linear momentum! Choose what you want to calculate(1-3):\n\n"
-         << "1.The linear momentum.\n"
-         << "2.The speed.\n"
-         << "3.The weight.\n";
-    int option = 0;
-    cout << "\nOption nr: ";
-    cin >> option;
-    cout << endl;
+void linear_momentum()
+{
+    std::cout << "Your function of choice: linear momentum!\n"
+        << "---------------------------------------------------------------------------\n\n"
+        << "What do you want to calculate (1-3):\n\n"
+        << "The linear momentum (1)\n"
+        << "The speed (2)\n"
+        << "The weight (3)\n";
+    std::cout << "\nOption nr: ";
 
-    if (option == 1)
+    int option{ static_cast<int>(inputValidator()) };
+    std::cout << '\n';
+
+    if (option == 1) //linear momentum
     {
-        double weight, speed;
-        cout << "Enter the weight of the body: ";
-        cin >> weight;
-        cout << "Enter the speed of the body: ";
-        cin >> speed;
-        cout << "The linear momentum is equal to: " << weight * speed << "kg*m/s" << endl;
+        std::cout << "Enter the weight of the body: ";
+        auto weight{ inputValidator() };
+        std::cout << "Enter the speed of the body: ";
+        auto speed{ inputValidator() };
+        
+        std::cout << "\nThe linear momentum is equal to: " << weight * speed << " kg*m/s\n";
     }
-    else if (option == 2)
+    else if (option == 2) //speed
     {
-        double momentum, weight;
-        cout << "Enter the weight of the body: ";
-        cin >> weight;
-        cout << "Enter the linear momentum of the body: ";
-        cin >> momentum;
-        cout << "The weight is equal to: " << momentum/weight << "m/s" << endl;
+        std::cout << "Enter the weight of the body: ";
+        auto weight{ inputValidator() };
+        std::cout << "Enter the linear momentum of the body: ";
+        auto momentum{ inputValidator() };
+
+        std::cout << "\nThe weight is equal to: " << momentum / weight << " m/s\n";
     }
-    else if (option == 3)
+    else if (option == 3) //weight
     {
-        double momentum, speed;
-        cout << "Enter the linear momentum: ";
-        cin >> momentum;
-        cout << "Enter the speed of the body: ";
-        cin >> speed;
-        cout << "The acceleration is equal to: " << momentum / speed << "kg" << endl;
+        std::cout << "Enter the linear momentum: ";
+        auto momentum{ inputValidator() };
+        std::cout << "Enter the speed of the body: ";
+        auto speed{ inputValidator() };
+        std::cout << "\nThe acceleration is equal to: " << momentum / speed << " kg\n";
     }
     else
     {
-        cout << "The number you chose does not correspond to any available function. Please try again.\n\n";
-        Linear_momentum();
+        std::cout << "The number you've chosen does not correspond to any available function. Please try again\n"
+            << "\n---------------------------------------------------------------------------\n";
+        linear_momentum();
+    }
+}
+
+void dynChoice()
+{
+    int choice{ static_cast<int>(inputValidator()) };
+    std::cout << '\n';
+
+    switch (choice)
+    {
+    case 1:
+        std::cout << "---------------------------------------------------------------------------\n";
+        slippery_slope_without_friction();
+        break;
+    case 2:
+        std::cout << "---------------------------------------------------------------------------\n";
+        slippery_slope_with_friction();
+        break;
+    case 3:
+        std::cout << "---------------------------------------------------------------------------\n";
+        Newtons_laws_of_motion();
+        break;
+    case 4:
+        std::cout << "---------------------------------------------------------------------------\n";
+        linear_momentum();
+        break;
+    default:
+        std::cout << "The number you've chosen does not correspond to any available function. Please try again: ";
+        dynChoice();
     }
 }
 
 void dynamics()
 {
-    cout << "\nYour chosen field: dynamics\nWhat function are you looking for?\n\n"
-         << "1.Slippery slope without friction\n"
-         << "2.Slippery slope with friction\n"
-         << "3.Newton's law of motion\n"
-         << "4.Linear momentum\n\n"
-         << "If you want to count the friction force on flat ground, enter angle = 0\n\n"
-         << "Function nr: ";
-    int choice;
-    cin >> choice;
-    cout << endl;
-
-    switch (choice)
-    {
-        case 1:
-            cout << "---------------------------------------------------------------------------\n";
-            slippery_slope_without_friction();
-            break;
-        case 2:
-            cout << "---------------------------------------------------------------------------\n";
-            slippery_slope_with_friction();
-            break;
-        case 3:
-            cout << "---------------------------------------------------------------------------\n";
-            Newtons_laws_of_motion();
-            break;
-        case 4:
-            cout << "---------------------------------------------------------------------------\n";
-            Linear_momentum();
-            break;
-        default:
-            cout << "The number you chose does not correspond to any available function. Please try again.\n\n";
-            dynamics();
-    }
-    cout << "\n---------------------------------------------------------------------------\n";
-    cout << "Do you wish to calculate anything else? (Y/N): ";
+    std::cout << "Your chosen field: dynamics\n"
+        << "---------------------------------------------------------------------------\n"
+        << "What function are you looking for?\n\n"
+        << " - slippery slope without friction (1)\n"
+        << " - slippery slope with friction (2)\n"
+        << " - Newton's law of motion (3)\n"
+        << " - linear momentum (4)\n\n"
+        << "If you want to count the friction force on flat ground enter angle = 0\n\n"
+        << "Function: ";
+    dynChoice();
+    
+    std::cout << "\n---------------------------------------------------------------------------\n";
+    std::cout << "\nDo you wish to calculate anything else in this field? (Y/N): ";
     char endOrNot;
-    cin >> endOrNot;
+    std::cin >> endOrNot;
+    std::cin.ignore(32767, '\n');
+
     if (endOrNot == 'y' || endOrNot == 'Y')
+    {
+        std::cout << "\n---------------------------------------------------------------------------\n";
         dynamics();
-    else if(endOrNot == 'n' || endOrNot == 'N')
-        exit;
-}
-int main()
-{
-    dynamics();
-    return 0;
+    }
 }
